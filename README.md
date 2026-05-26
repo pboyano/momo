@@ -74,3 +74,4 @@ MoMo é um site responsivo que simula uma plataforma de marketplace para aulas d
 - Criação do DER
 - Criação das tabelas de banco de dados
 - Remoção da "transferência de saldo entre alunos"
+- Criação de interações de Banco de Dados
