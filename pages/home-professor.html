@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MoMo - Professor</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-momo shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            MoMo
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Minhas aulas
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Agenda
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Perfil
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- CONTEÚDO -->
+<div class="container py-5">
+
+    <!-- Saudação -->
+    <div class="mb-5">
+
+        <h2 class="fw-bold text-momo">
+            Olá, Professor Lucas 👋
+        </h2>
+
+        <p class="text-muted">
+            Gerencie suas aulas e acompanhe seus agendamentos.
+        </p>
+
+    </div>
+
+    <!-- Cards resumo -->
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-4">
+
+            <div class="card dashboard-card border-0 shadow-sm p-4 text-center">
+
+                <h5 class="text-muted">
+                    Saldo disponível
+                </h5>
+
+                <h2 class="fw-bold text-momo">
+                    320 créditos
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card dashboard-card border-0 shadow-sm p-4 text-center">
+
+                <h5 class="text-muted">
+                    Aulas cadastradas
+                </h5>
+
+                <h2 class="fw-bold text-momo">
+                    12
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card dashboard-card border-0 shadow-sm p-4 text-center">
+
+                <h5 class="text-muted">
+                    Alunos agendados
+                </h5>
+
+                <h2 class="fw-bold text-momo">
+                    26
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Botão cadastrar -->
+    <div class="mb-5">
+
+        <a
+            href="cadastrar-aula.html"
+            class="btn btn-momo"
+        >
+            + Cadastrar nova aula
+        </a>
+
+    </div>
+
+    <!-- Próximas aulas -->
+    <h4 class="fw-bold mb-4">
+        Próximas aulas
+    </h4>
+
+    <div class="row g-4">
+
+        <!-- Aula -->
+        <div class="col-lg-6">
+
+            <div class="card aula-card border-0 shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <h5 class="fw-bold">
+                            Yoga ao ar livre
+                        </h5>
+
+                        <span class="badge bg-success">
+                            Confirmada
+                        </span>
+
+                    </div>
+
+                    <p class="text-muted">
+                        📍 Parque Taquaral
+                    </p>
+
+                    <p>
+                        🕒 18:00 <br>
+                        👥 8 alunos confirmados
+                    </p>
+
+                    <div class="d-flex gap-2">
+
+                        <button class="btn btn-outline-secondary w-50">
+                            Editar
+                        </button>
+
+                        <button class="btn btn-momo w-50">
+                            Ver detalhes
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Aula -->
+        <div class="col-lg-6">
+
+            <div class="card aula-card border-0 shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <h5 class="fw-bold">
+                            Funcional
+                        </h5>
+
+                        <span class="badge bg-warning text-dark">
+                            Lotada
+                        </span>
+
+                    </div>
+
+                    <p class="text-muted">
+                        📍 Cambuí
+                    </p>
+
+                    <p>
+                        🕒 19:30 <br>
+                        👥 12 alunos confirmados
+                    </p>
+
+                    <div class="d-flex gap-2">
+
+                        <button class="btn btn-outline-secondary w-50">
+                            Editar
+                        </button>
+
+                        <button class="btn btn-momo w-50">
+                            Ver detalhes
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
