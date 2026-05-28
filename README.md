@@ -1,77 +1,85 @@
-# MoMo
+MoMo
+Plataforma de marketplace e reserva de aulas de atividades físicas com fluxos e painéis diferenciados para alunos e professores.
 
-Projeto estático de plataforma de reserva de aulas de atividades físicas com fluxos diferenciados para alunos e professores.
+Descrição do Projeto
+O MoMo é uma aplicação web responsiva projetada para conectar entusiastas de atividades físicas a instrutores qualificados. O sistema opera através de um modelo de economia de créditos, onde alunos adquirem pacotes de créditos para reservar vagas em aulas, e professores gerenciam seus agendamentos e faturamento. Atualmente, o projeto conta com uma interface moderna e uma arquitetura de simulação funcional no frontend, onde os dados são persistidos no navegador através do localStorage, preparando a aplicação para a integração definitiva com um banco de dados relacional.
 
-## Descrição
+Funcionalidades Principais
+Para Alunos
+Autenticação: Login simulado que reconhece o perfil do usuário automaticamente.
 
-MoMo é um site responsivo que simula uma plataforma de marketplace para aulas de atividades físicas. O projeto demonstra dois fluxos principais:
+Marketplace de Atividades: Busca, filtragem e exploração de aulas disponíveis por região e modalidade.
 
-**Para Alunos:**
-- Autenticação e login
-- Busca e filtro de aulas disponíveis
-- Reserva de aulas
-- Gerenciamento de aulas reservadas
-- Perfil pessoal
+Sistema de Agendamento: Reserva instantânea de vagas com abatimento automático no saldo de créditos.
 
-**Para Professores:**
-- Autenticação e login
-- Cadastro de novas aulas
-- Gerenciamento de aulas criadas
-- Perfil pessoal
+Simulação de Checkout: Modal interativo preparado para integração futura com gateways de pagamento externos, como Stripe ou Mercado Pago.
 
-## Estrutura de Arquivos
+Dashboard e Extrato: Histórico completo de transações, incluindo entradas de créditos e saídas por reservas, acompanhado de um painel estatístico de evolução.
 
-### Páginas Públicas
-- `index.html` - página inicial de login
-- `cadastro.html` - formulário de cadastro de novo usuário
+Para Professores
+Painel de Controle Operacional: Visualização da receita em créditos e contadores em tempo real para controle de alunos atendidos e média de avaliações.
 
-### Páginas do Aluno
-- `home-aluno.html` - dashboard principal do aluno
-- `buscar-aulas.html` - página de busca e filtro de aulas
-- `minhas-aulas-aluno.html` - aulas reservadas pelo aluno
-- `perfil-aluno.html` - perfil do aluno
+Módulo de Criação: Formulário estruturado para cadastro de novas aulas com definição de capacidade, local e custo em créditos.
 
-### Páginas do Professor
-- `home-professor.html` - dashboard principal do professor
-- `cadastrar-aula.html` - formulário para criar nova aula
-- `minhas-aulas-professor.html` - aulas criadas pelo professor
-- `perfil-professor.html` - perfil do professor
+Gestão de Grade: Listagem dinâmica das aulas ofertadas com ferramentas integradas para edição e cancelamento de registros.
 
-### Recursos
-- `css/style.css` - estilos e customizações do site
-- `js/script.js` - scripts para interatividade
+Estrutura de Pastas e Arquivos
+Abaixo está a organização dos arquivos após a refatoração do ecossistema e a componentização em pastas de recursos:
 
-## Características
+Plaintext
+momo/
+├── assets/
+│   ├── css/
+│   │   └── style.css       # Identidade visual, variáveis (:root) e micro-animações
+│   ├── js/
+│   │   └── script.js       # Motor da aplicação, lógica de créditos e localStorage
+│   └── img/                # Imagens e vetores da plataforma
+├── docs/
+│   └── der.png             # Diagrama de Entidade-Relacionamento oficial do Banco
+├── pages/                  # Módulos restritos da aplicação
+│   ├── buscar-aulas.html
+│   ├── cadastrar-aula.html
+│   ├── cadastro.html
+│   ├── editar-aula.html
+│   ├── home-aluno.html
+│   ├── home-professor.html
+│   ├── minhas-aulas-aluno.html
+│   ├── minhas-aulas-professor.html
+│   ├── perfil-aluno.html
+│   ├── perfil-professor.html
+│   ├── reserva.html        # Tela de feedback de sucesso
+│   └── saldo.html          # Central de finanças e extrato do aluno
+├── index.html              # Tela de entrada e autenticação unificada
+└── README.md
 
-- Design responsivo com Bootstrap 5.3.3
-- Navbar dinâmica com navegação contextual
-- Filtros de busca de aulas (modalidade, região)
-- Cards informativos com detalhes das aulas
-- Sistema de créditos para pagamento de aulas
-- Formulários intuitivos e bem estruturados
-- Interface limpa e moderna com paleta de cores MoMo
 
-## Como Usar
+Tecnologias e Frameworks
+HTML5: Estruturação otimizada para acessibilidade e semântica.
 
-1. Abra o arquivo `index.html` em um navegador
-2. Realize login ou crie uma nova conta
-3. Escolha seu tipo de conta (aluno ou professor)
-4. Navegue conforme seu perfil:
-   - **Como Aluno:** Busque aulas, reserve atividades e gerenie suas aulas
-   - **Como Professor:** Crie novas aulas e gerenccie as existentes
+CSS3: Customização baseada em variáveis nativas, gradientes e efeitos de transição nos cards.
 
-## Tecnologias
+Bootstrap 5.3.3: Framework utilitário garantindo responsividade mobile-first e componentes como modais, navbars adaptativas e grids.
 
-- **HTML5** - Estrutura das páginas
-- **CSS3** - Estilos customizados
-- **Bootstrap 5.3.3** - Framework responsivo
-- **JavaScript** - Interatividade (em desenvolvimento)
-- **SQL** - Banco de dados (em desenvolvimento)
+JavaScript (ES6): Manipulação dinâmica do DOM e lógica de persistência de sessão.
 
-## Atualizações
+Web Storage API (localStorage): Persistência de dados simulada no cliente para validação das regras de negócio, como o bloqueio de reserva por falta de saldo.
 
-- Reorganização dos arquivos que compõe a aplicação
-- Criação do DER
-- Criação das tabelas de banco de dados
-- Remoção da "transferência de saldo entre alunos"
-- Criação de interações de Banco de Dados
+Atualizações Recentes e Evolução Técnica
+Refatoração de Escopo: Remoção da funcionalidade de transferência direta de saldo entre alunos para blindagem do ecossistema financeiro.
+
+Padronização Arquitetural: Agrupamento de arquivos estáticos dentro da pasta encapsulada assets e correção de caminhos relativos em todas as visões.
+
+Mapeamento de Dados: Inserção de identificadores exclusivos, como atributos id e form, em todas as tags críticas de exibição, preparando o HTML para as queries SELECT e UPDATE do módulo de banco de dados.
+
+UX Refinada: Substituição de redirecionamentos brutos por feedbacks visuais estruturados, como a nova página de reserva concluída e modais nativos de recarga.
+
+Como Executar a Aplicação
+Clone o repositório ou baixe os arquivos do projeto.
+
+Abra o arquivo raiz index.html em qualquer navegador moderno.
+
+Para testar a simulação automatizada do banco de dados, utilize as seguintes credenciais padrão no campo de e-mail:
+
+Acesso Aluno: maria@email.com (Inicia com 120 créditos para gastar em reservas)
+
+Acesso Professor: lucas@email.com (Painel com 320 créditos e visão de instrutor)
