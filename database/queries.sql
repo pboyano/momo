@@ -1,55 +1,71 @@
--- Listar todos os alunos
-SELECT * FROM alunos;
+-- =====================================================================
+-- 1. OPERAÇÕES DE LEITURA (SELECT / READ)
+-- =====================================================================
 
--- Listar aulas com nome do professor
+-- Listar todos os alunos (buscando o nome e email que estão na tabela usuario)
+SELECT a.id_aluno, u.nome, u.email, a.saldo 
+FROM "aluno" a
+JOIN "usuario" u ON a.id_usuario = u.id_usuario;
+
+-- Listar todas as aulas exibindo o nome do respectivo professor
 SELECT 
-    a.id,
-    a.titulo,
-    a.data_hora,
-    p.nome AS professor
-FROM aulas a
-JOIN professores p ON a.professor_id = p.id;
+    au.id_aula,
+    au.titulo,
+    au.data_aula,
+    au.hora_aula,
+    u.nome AS professor
+FROM "aula" au
+JOIN "professor" p ON au.id_professor = p.id_professor
+JOIN "usuario" u ON p.id_usuario = u.id_usuario;
 
--- Ver reservas de um aluno
+-- Ver o histórico de reservas de um aluno específico (Ex: Aluno ID 1)
 SELECT 
-    r.id,
-    a.titulo,
-    r.status
-FROM reservas r
-JOIN aulas a ON r.aula_id = a.id
-WHERE r.aluno_id = 1;
+    r.id_reserva,
+    au.titulo,
+    r.status,
+    au.data_aula
+FROM "reserva" r
+JOIN "aula" au ON r.id_aula = au.id_aula
+WHERE r.id_aluno = 1;
 
--- Atualizar status da reserva
-UPDATE reservas
+
+-- =====================================================================
+-- 2. OPERAÇÕES DE ATUALIZAÇÃO (UPDATE)
+-- =====================================================================
+
+-- Atualizar o status de uma reserva específica
+UPDATE "reserva"
 SET status = 'confirmada'
-WHERE id = 1;
+WHERE id_reserva = 1;
 
--- Atualizar dados do aluno
-UPDATE alunos
+-- Atualizar dados cadastrais do Usuário (Ex: Mudança de e-mail)
+UPDATE "usuario"
 SET email = 'novoemail@email.com'
-WHERE id = 1;
+WHERE id_usuario = 1;
 
--- Alterar aula
-UPDATE aulas
-SET titulo = 'Yoga Avançado', descricao = 'aula para avançados'
-WHERE id = 1;
+-- Alterar informações de agendamento de uma aula
+UPDATE "aula"
+SET titulo = 'Yoga Avançado', descricao = 'Aula focada em técnicas avançadas.'
+WHERE id_aula = 1;
 
--- Remover reserva
-DELETE FROM reservas
-WHERE id = 2;
 
--- Remover aluno
-DELETE FROM alunos
-WHERE id = 2;
+-- =====================================================================
+-- 3. OPERAÇÕES DE REMOÇÃO (DELETE)
+-- =====================================================================
 
--- Remover aula
-DELETE FROM aulas
-WHERE id = 1;
+-- Cancelar/Remover uma reserva do sistema
+DELETE FROM "reserva"
+WHERE id_reserva = 2;
 
--- Quantas reservas cada aula tem
+
+-- =====================================================================
+-- 4. CONSULTA AVANÇADA (AGREGAÇÃO COM GROUP BY)
+-- =====================================================================
+
+-- Contabilizar quantas reservas cada aula possui cadastrada
 SELECT 
-    a.titulo,
-    COUNT(r.id) AS total_reservas
-FROM aulas a
-LEFT JOIN reservas r ON a.id = r.aula_id
-GROUP BY a.id, a.titulo;
+    au.titulo,
+    COUNT(r.id_reserva) AS total_reservas
+FROM "aula" au
+LEFT JOIN "reserva" r ON au.id_aula = r.id_aula
+GROUP BY au.id_aula, au.titulo;

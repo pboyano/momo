@@ -45,14 +45,17 @@ CREATE TABLE "reserva" (
   "checkin" boolean
 );
 
-ALTER TABLE "usuario" ADD FOREIGN KEY ("id_usuario") REFERENCES "aluno" ("id_usuario") DEFERRABLE INITIALLY IMMEDIATE;
+-- CORREÇÃO: O Aluno é quem possui o id_usuario apontando para a tabela pai (Usuario)
+ALTER TABLE "aluno" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 
-ALTER TABLE "usuario" ADD FOREIGN KEY ("id_usuario") REFERENCES "professor" ("id_usuario") DEFERRABLE INITIALLY IMMEDIATE;
+-- CORREÇÃO: O Professor é quem possui o id_usuario apontando para a tabela pai (Usuario)
+ALTER TABLE "professor" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 
-ALTER TABLE "aula" ADD FOREIGN KEY ("id_professor") REFERENCES "professor" ("id_professor") DEFERRABLE INITIALLY IMMEDIATE;
+-- A aula aponta para o professor que vai ministrá-la
+ALTER TABLE "aula" ADD FOREIGN KEY ("id_professor") REFERENCES "professor" ("id_professor");
 
-ALTER TABLE "reserva" ADD FOREIGN KEY ("id_aluno") REFERENCES "aluno" ("id_aluno") DEFERRABLE INITIALLY IMMEDIATE;
+-- A reserva aponta para o aluno que está agendando
+ALTER TABLE "reserva" ADD FOREIGN KEY ("id_aluno") REFERENCES "aluno" ("id_aluno");
 
-ALTER TABLE "reserva" ADD FOREIGN KEY ("id_aula") REFERENCES "aula" ("id_aula") DEFERRABLE INITIALLY IMMEDIATE;
-
-ALTER TABLE "reserva" ADD FOREIGN KEY ("data_reserva") REFERENCES "reserva" ("id_aluno") DEFERRABLE INITIALLY IMMEDIATE;
+-- CORREÇÃO: A reserva aponta para a aula escolhida (e não para data_reserva)
+ALTER TABLE "reserva" ADD FOREIGN KEY ("id_aula") REFERENCES "aula" ("id_aula");
