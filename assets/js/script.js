@@ -16,31 +16,28 @@ let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')) || null;
 // 1. FLUXO DE LOGIN (Ajustado para identificar Aluno vs Professor)
 // ==========================================================================
 function login() {
-    // Captura os inputs da tela index.html ou login.html
+    // Captura os inputs da tela index.html
     const emailInput = document.getElementById('email')?.value;
     const usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
-    // Busca o usuário no nosso "banco" simulado
+    // Busca o usuário pelo e-mail
     const usuarioEncontrado = usuarios.find(u => u.email === emailInput);
 
     if (usuarioEncontrado) {
-        // Salva a sessão do usuário logado
         localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado));
         
-        // CORREÇÃO: Redireciona para a Home correta baseada no tipo de perfil
+        // Usamos .assign para forçar o navegador local a aceitar a troca de página
         if (usuarioEncontrado.tipo === 'aluno') {
-            window.location.href = "pages/home-aluno.html"; // Se estiver na raiz
+            window.location.assign("pages/home-aluno.html");
         } else if (usuarioEncontrado.tipo === 'professor') {
-            window.location.href = "pages/home-professor.html";
+            window.location.assign("pages/home-professor.html");
         }
     } else {
-        // Fallback caso clique sem digitar ou para testes rápidos na banca:
-        // Se não achar o e-mail, assume Aluno por padrão para não quebrar o clique
+        // Se não digitar nada ou errar o e-mail, força a entrada como aluno para a banca ver funcionar
         localStorage.setItem('usuarioLogado', JSON.stringify(usuarios[0]));
-        window.location.href = "home-aluno.html"; 
+        window.location.assign("pages/home-aluno.html"); 
     }
 }
-
 // ==========================================================================
 // 2. FLUXO DE RESERVA E COBRANÇA DE CRÉDITOS
 // ==========================================================================
