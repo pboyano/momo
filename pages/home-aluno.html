@@ -6,228 +6,154 @@
 
     <title>Momo - Home Aluno</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-momo shadow-sm">
-
     <div class="container">
-
         <a class="navbar-brand fw-bold" href="#">
             MoMo
         </a>
-
         <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav">
-
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div
-            class="collapse navbar-collapse"
-            id="navbarNav">
-
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-
                 <li class="nav-item">
                     <a class="nav-link active" href="#">
                         Home
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="minhas-aulas.html">
+                    <a class="nav-link" href="minhas-aulas-aluno.html">
                         Minhas aulas
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="saldo.html">
                         Saldo
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="perfil-aluno.html">
                         Perfil
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="../index.html">
+                        Sair
+                    </a>
+                </li>
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
-<!-- CONTEÚDO -->
 <div class="container py-5">
 
-    <!-- Saudação -->
     <div class="mb-4">
         <h2 class="fw-bold text-momo">
-            Olá, Maria 👋
+            Olá, <span id="nome-aluno">Maria</span> 👋
         </h2>
-
         <p class="text-muted">
             Encontre uma atividade para hoje
         </p>
     </div>
 
-    <!-- Busca -->
     <div class="card border-0 shadow-sm p-4 mb-5 search-card">
-
-        <h5 class="mb-3">
+        <h5 class="mb-3 fw-semibold text-secondary">
             Buscar atividade
         </h5>
-
-        <div class="row g-3">
-
-            <div class="col-md-8">
-                <input
-                    type="text"
-                    class="form-control momo-input"
-                    placeholder="Ex: Yoga, Funcional, Corrida"
-                >
+        <form action="buscar-aulas.html" method="GET">
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <input
+                        type="text"
+                        name="busca"
+                        class="form-control momo-input"
+                        placeholder="Ex: Yoga, Funcional, Corrida"
+                    >
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-momo w-100">
+                        Buscar
+                    </button>
+                </div>
             </div>
-
-            <div class="col-md-4">
-                <button class="btn btn-momo w-100">
-                    Buscar
-                </button>
-            </div>
-
-        </div>
-
+        </form>
     </div>
 
-    <!-- Categorias -->
     <h4 class="fw-bold mb-3">
         Categorias
     </h4>
-
     <div class="d-flex flex-wrap gap-2 mb-5">
-
-        <span class="badge rounded-pill momo-badge">
-            Yoga
-        </span>
-
-        <span class="badge rounded-pill momo-badge">
-            Musculação
-        </span>
-
-        <span class="badge rounded-pill momo-badge">
-            Funcional
-        </span>
-
-        <span class="badge rounded-pill momo-badge">
-            Corrida
-        </span>
-
-        <span class="badge rounded-pill momo-badge">
-            Alongamento
-        </span>
-
+        <a href="buscar-aulas.html?busca=Yoga" class="badge rounded-pill momo-badge text-decoration-none">Yoga</a>
+        <a href="buscar-aulas.html?busca=Musculação" class="badge rounded-pill momo-badge text-decoration-none">Musculação</a>
+        <a href="buscar-aulas.html?busca=Funcional" class="badge rounded-pill momo-badge text-decoration-none">Funcional</a>
+        <a href="buscar-aulas.html?busca=Corrida" class="badge rounded-pill momo-badge text-decoration-none">Corrida</a>
+        <a href="buscar-aulas.html?busca=Alongamento" class="badge rounded-pill momo-badge text-decoration-none">Alongamento</a>
     </div>
 
-    <!-- Cards de Aula -->
     <h4 class="fw-bold mb-4">
-        Aulas disponíveis
+        Aulas em destaque hoje
     </h4>
 
-    <div class="row g-4">
+    <div class="row g-4" id="container-destaques">
 
-        <!-- Card 1 -->
-        <div class="col-lg-4">
-
+        <div class="col-lg-4 col-md-6">
             <div class="card aula-card shadow-sm border-0 h-100">
-
-                <div class="card-body">
-
-                    <h5 class="fw-bold">
-                        Yoga ao ar livre
-                    </h5>
-
-                    <p class="text-muted mb-2">
-                        Professora Ana
-                    </p>
-
-                    <p>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="fw-bold">Yoga ao ar livre</h5>
+                    <p class="text-muted small mb-2">Professora Ana Costa</p>
+                    
+                    <p class="text-secondary small flex-grow-1">
                         📍 Taquaral <br>
-                        🕒 18:00
+                        📅 20/06/2026 <br>
+                        🕒 18:00 (60 min)
                     </p>
 
-                    <h5 class="text-momo fw-bold mb-3">
-                        25 créditos
-                    </h5>
-
-                    <a
-                        href="reserva.html"
-                        class="btn btn-momo w-100"
-                    >
+                    <h5 class="text-momo fw-bold mb-3">25 créditos</h5>
+                    <a href="reserva.html?id_aula=1" class="btn btn-momo w-100 mt-auto">
                         Reservar
                     </a>
-
                 </div>
-
             </div>
-
         </div>
 
-        <!-- Card 2 -->
-        <div class="col-lg-4">
-
+        <div class="col-lg-4 col-md-6">
             <div class="card aula-card shadow-sm border-0 h-100">
-
-                <div class="card-body">
-
-                    <h5 class="fw-bold">
-                        Treino Funcional
-                    </h5>
-
-                    <p class="text-muted mb-2">
-                        Professor Lucas
-                    </p>
-
-                    <p>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="fw-bold">Treino Funcional</h5>
+                    <p class="text-muted small mb-2">Professor Lucas Lima</p>
+                    
+                    <p class="text-secondary small flex-grow-1">
                         📍 Cambuí <br>
-                        🕒 19:30
+                        📅 21/06/2026 <br>
+                        🕒 19:30 (45 min)
                     </p>
 
-                    <h5 class="text-momo fw-bold mb-3">
-                        30 créditos
-                    </h5>
-
-                    <a
-                        href="reserva.html"
-                        class="btn btn-momo w-100"
-                    >
+                    <h5 class="text-momo fw-bold mb-3">30 créditos</h5>
+                    <a href="reserva.html?id_aula=2" class="btn btn-momo w-100 mt-auto">
                         Reservar
                     </a>
-
                 </div>
-
             </div>
-
         </div>
 
     </div>
-
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>

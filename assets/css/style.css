@@ -1,3 +1,6 @@
+/* ==========================================================================
+   VÁRIAVEIS GLOBAIS E PALETA DE CORES
+   ========================================================================== */
 :root {
     --primary: #7C3AED;
     --primary-dark: #6D28D9;
@@ -7,17 +10,18 @@
     --white: #ffffff;
 }
 
+/* ==========================================================================
+   REGRAS GLOBAIS
+   ========================================================================== */
 body {
     background-color: var(--background);
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
 }
 
+/* Utilitários de cores baseados na identidade MoMo */
 .bg-momo {
-    background: linear-gradient(
-        135deg,
-        #7C3AED,
-        #6D28D9
-    );
+    background: linear-gradient(135deg, #7C3AED, #6D28D9) !important;
 }
 
 .bg-light-purple {
@@ -25,107 +29,154 @@ body {
 }
 
 .text-momo {
-    color: var(--primary);
+    color: var(--primary) !important;
 }
 
-.login-card {
-    width: 100%;
-    max-width: 420px;
-    border-radius: 24px;
+/* ==========================================================================
+   COMPONENTES DE NAVBAR e NAVEGAÇÃO
+   ========================================================================== */
+.navbar {
+    padding: 15px 0;
 }
 
+.navbar-brand {
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   FORMULÁRIOS E INPUTS PERSONALIZADOS
+   ========================================================================== */
 .momo-input {
     border-radius: 12px;
     padding: 12px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    color: var(--text);
 }
 
-.momo-input:focus {
+/* Aplica o foco elegante para inputs, selects e textareas */
+.momo-input:focus,
+.form-select.momo-input:focus,
+textarea.momo-input:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.2);
+    outline: none;
 }
 
+.form-select.momo-input {
+    height: 50px;
+}
+
+/* Customização de Badges/Tags */
+.momo-badge {
+    background-color: #E9D5FF;
+    color: #6D28D9;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Permite que as badges da Home funcionem como botões clicáveis */
+a.momo-badge:hover {
+    background-color: var(--primary);
+    color: var(--white) !important;
+}
+
+/* ==========================================================================
+   BOTÕES PERSONALIZADOS
+   ========================================================================== */
 .btn-momo {
     background-color: var(--primary);
     color: white;
     border-radius: 12px;
     padding: 12px;
     font-weight: 600;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-decoration: none; /* Garante que links tipo botão não fiquem sublinhados */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn-momo:hover {
+.btn-momo:hover, .btn-momo:focus {
     background-color: var(--primary-dark);
-    color: white;
+    color: white !important;
 }
 
-@media (max-width: 991px) {
-    .login-card {
-        margin: 20px;
-    }
-}
-.cadastro-card {
-    border-radius: 24px;
-    background: white;
+.btn-momo:active {
+    transform: scale(0.98);
 }
 
-.form-select.momo-input {
-    height: 50px;
-}
-.search-card {
-    border-radius: 24px;
-}
-
-.aula-card {
-    border-radius: 24px;
-    transition: 0.3s;
+/* Ajuste nos botões secundários do Bootstrap para casar com o layout */
+.btn-outline-secondary {
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
 }
 
-.aula-card:hover {
-    transform: translateY(-5px);
+.btn-outline-danger {
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
 }
 
-.momo-badge {
-    background-color: #E9D5FF;
-    color: #6D28D9;
-    padding: 10px 16px;
-    font-size: 14px;
-}
-
-.navbar {
-    padding: 15px 0;
-}
-.dashboard-card {
-    border-radius: 24px;
-    transition: 0.3s;
-}
-
-.dashboard-card:hover {
-    transform: translateY(-5px);
-}
-.saldo-card {
-    background: linear-gradient(
-        135deg,
-        #7C3AED,
-        #6D28D9
-    );
-
-    border-radius: 24px;
-}
-
+/* ==========================================================================
+   CARDS E ESTRUTURAS DE DASHBOARD
+   ========================================================================== */
+/* Regra base para cards com elevação e micro-interações */
+.aula-card, 
+.dashboard-card, 
 .action-card {
     border-radius: 24px;
-    transition: 0.3s;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
+.aula-card:hover, 
+.dashboard-card:hover, 
 .action-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(109, 40, 217, 0.12) !important;
 }
 
+/* Cards estáticos (Sem efeito hover de flutuação) */
+.login-card,
+.cadastro-card,
+.search-card,
+.profile-card,
+.saldo-card {
+    border-radius: 24px;
+}
+
+.saldo-card {
+    background: linear-gradient(135deg, #7C3AED, #6D28D9);
+}
+
+/* Item da lista de extrato de transações */
 .transaction-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 8px 0;
+    transition: background-color 0.2s ease;
 }
 
-.profile-card {
-    border-radius: 24px;
+/* ==========================================================================
+   REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 991px) {
+    .login-card, .cadastro-card {
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem; /* Ajusta o tamanho do saldo grande em celulares */
+    }
 }

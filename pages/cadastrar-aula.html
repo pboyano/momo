@@ -6,247 +6,211 @@
 
     <title>MoMo - Cadastrar Aula</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-momo shadow-sm">
-
     <div class="container">
-
         <a class="navbar-brand fw-bold" href="home-professor.html">
             MoMo
         </a>
-
         <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav">
-
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarNav">
-
             <ul class="navbar-nav ms-auto">
-
                 <li class="nav-item">
                     <a class="nav-link" href="home-professor.html">
                         Home
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link active" href="#">
                         Nova Aula
                     </a>
                 </li>
-
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
-<!-- CONTEÚDO -->
 <div class="container py-5">
-
     <div class="row justify-content-center">
-
         <div class="col-lg-8">
-
             <div class="card shadow border-0 cadastro-card">
-
                 <div class="card-body p-5">
 
                     <div class="mb-4 text-center">
-
                         <h2 class="fw-bold text-momo">
                             Cadastrar Nova Aula
                         </h2>
-
                         <p class="text-muted">
-                            Preencha os dados da atividade
+                            Preencha os dados da atividade para publicação
                         </p>
-
                     </div>
 
-                    <form>
+                    <form id="form-cadastrar-aula">
 
-                        <!-- Nome -->
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Nome da aula
+                            <label for="titulo" class="form-label">
+                                Nome da aula / Atividade
                             </label>
-
                             <input
                                 type="text"
+                                id="titulo"
                                 class="form-control momo-input"
-                                placeholder="Ex: Yoga ao ar livre"
+                                placeholder="Ex: Aula de Yoga Matinal, Circuito Funcional"
+                                required
                             >
-
                         </div>
 
-                        <!-- Modalidade -->
                         <div class="mb-3">
-
-                            <label class="form-label">
-                                Categoria
+                            <label for="modalidade" class="form-label">
+                                Modalidade
                             </label>
-
-                            <select class="form-select momo-input">
-
-                                <option selected disabled>
-                                    Selecione
+                            <select id="modalidade" class="form-select momo-input" required>
+                                <option selected disabled value="">
+                                    Selecione a modalidade
                                 </option>
-
-                                <option>Yoga</option>
-                                <option>Funcional</option>
-                                <option>Corrida</option>
-                                <option>Musculação</option>
-                                <option>Pilates</option>
-
+                                <option value="Presencial">Presencial</option>
+                                <option value="Online">Online</option>
                             </select>
-
                         </div>
 
-                        <!-- Linha -->
                         <div class="row">
-
                             <div class="col-md-6 mb-3">
-
-                                <label class="form-label">
+                                <label for="data_aula" class="form-label">
                                     Data
                                 </label>
-
                                 <input
                                     type="date"
+                                    id="data_aula"
                                     class="form-control momo-input"
+                                    required
                                 >
-
                             </div>
 
                             <div class="col-md-6 mb-3">
-
-                                <label class="form-label">
-                                    Horário
+                                <label for="hora_aula" class="form-label">
+                                    Horário de início
                                 </label>
-
                                 <input
                                     type="time"
+                                    id="hora_aula"
                                     class="form-control momo-input"
+                                    required
                                 >
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="duracao" class="form-label">
+                                    Duração (minutos)
+                                </label>
+                                <input
+                                    type="number"
+                                    id="duracao"
+                                    class="form-control momo-input"
+                                    placeholder="Ex: 60"
+                                    min="1"
+                                    required
+                                >
                             </div>
 
+                            <div class="col-md-8 mb-3">
+                                <label for="local_aula" class="form-label">
+                                    Local da aula / Link da Transmissão
+                                </label>
+                                <input
+                                    type="text"
+                                    id="local_aula"
+                                    class="form-control momo-input"
+                                    placeholder="Ex: Parque Taquaral ou Link do Zoom"
+                                    required
+                                >
+                            </div>
                         </div>
 
-                        <!-- Local -->
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Local da aula
-                            </label>
-
-                            <input
-                                type="text"
-                                class="form-control momo-input"
-                                placeholder="Ex: Parque Taquaral"
-                            >
-
-                        </div>
-
-                        <!-- Linha -->
                         <div class="row">
-
                             <div class="col-md-6 mb-3">
-
-                                <label class="form-label">
+                                <label for="vagas" class="form-label">
                                     Vagas disponíveis
                                 </label>
-
                                 <input
                                     type="number"
+                                    id="vagas"
                                     class="form-control momo-input"
                                     placeholder="10"
+                                    min="1"
+                                    required
                                 >
-
                             </div>
 
                             <div class="col-md-6 mb-3">
-
-                                <label class="form-label">
-                                    Valor em saldo
+                                <label for="valor_creditos" class="form-label">
+                                    Valor em créditos
                                 </label>
-
                                 <input
                                     type="number"
+                                    id="valor_creditos"
                                     class="form-control momo-input"
                                     placeholder="25"
+                                    min="0"
+                                    required
                                 >
-
                             </div>
-
                         </div>
 
-                        <!-- Descrição -->
                         <div class="mb-4">
-
-                            <label class="form-label">
-                                Descrição
+                            <label for="descricao" class="form-label">
+                                Descrição e recomendações
                             </label>
-
                             <textarea
+                                id="descricao"
                                 class="form-control momo-input"
-                                rows="4"
-                                placeholder="Descreva a atividade..."
+                                rows="3"
+                                placeholder="Descreva a atividade, roupas recomendadas, equipamentos necessários..."
+                                required
                             ></textarea>
-
                         </div>
 
-                        <!-- Botões -->
-                        <div class="d-flex gap-3">
+                        <input type="hidden" id="status" value="Ativa">
 
+                        <div class="d-flex gap-3">
                             <a
                                 href="home-professor.html"
-                                class="btn btn-outline-secondary w-50"
+                                class="btn btn-outline-secondary w-50 d-flex align-items-center justify-content-center"
                             >
                                 Cancelar
                             </a>
-
                             <button
                                 type="submit"
                                 class="btn btn-momo w-50"
                             >
                                 Salvar Aula
                             </button>
-
                         </div>
 
                     </form>
 
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../js/script.js"></script>
 
 </body>
 </html>
