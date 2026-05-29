@@ -5,7 +5,7 @@ CREATE TABLE "usuario" (
   "senha" varchar,
   "telefone" varchar,
   "tipo_usuario" varchar,
-  "data_cadastro" datetime
+  "data_cadastro" timestamp
 );
 
 CREATE TABLE "aluno" (
@@ -41,7 +41,7 @@ CREATE TABLE "reserva" (
   "id_aluno" int,
   "id_aula" int,
   "status" varchar,
-  "data_reserva" datetime,
+  "data_reserva" timestamp,
   "checkin" boolean
 );
 
